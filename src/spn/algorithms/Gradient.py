@@ -6,7 +6,7 @@ from spn.structure.Base import eval_spn_top_down, Sum, Product, Leaf, get_number
 
 
 def merge_gradients(parent_gradients):
-    return logsumexp(np.concatenate(parent_gradients).reshape(-1, 1), axis=1)
+    return logsumexp(np.vstack(parent_gradients).T, axis=1)
 
 
 def leaf_gradient_backward(node, parent_result, gradient_result=None, lls_per_node=None):
